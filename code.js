@@ -16,12 +16,18 @@ function mergesort(array) {
                     break;
                 }
                 if (array[k] > array[temp]) {
-                    var temp2 = array[temp];
+                    //The code below just swaps the elements at k and temp
+                    //and for the comments I just got confused as i had the slides up on my second monitor for reference and wrote that this was the merge step when its obviusly not. So thats my bad
+                    //var temp2 = array[temp];
+                    //array = array.slice(0, temp).concat(array.slice(temp + 1, array.length)); //I was having problems getting it to merge back up so this code is insipred by cadenmcfate
+                    //array.splice(k, 0, temp2);
+                    //temp++;
 
-                    array = array.slice(0, temp).concat(array.slice(temp + 1, array.length)); //I was having problems getting it to merge back up so this code is insipred by cadenmcfate
-                    array.splice(k, 0, temp2); //same comment as above
-
-                    temp++;
+                    //Here is a different version that is more clear
+                    var temp2 = array[temp]; //Make a copy of temp
+                    array.splice(temp, 1); //Take temp out of the array
+                    array.splice(k, 0, temp2); //Puts temp where k was and effectivly shifts k and everything else right 
+                    temp++; //increment temp
                 }
             }
         }
